@@ -11,7 +11,6 @@ Em desenvolvimento
 
 ### ✏️ RF (Requisitos funcionais)
 
-- [ ] O usuário deve poder criar seu próprio login;
 - [ ] O usuário deve poder inserir uma nova refeição, informando nome, descrição, data/hora e se está dentro ou não da dieta;
 - [ ] O usuário deve pode editar uma refeição, podendo alterar os dados acima;
 - [ ] O usuário deve poder apagar uma refeição;
