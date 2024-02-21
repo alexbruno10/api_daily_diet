@@ -15,6 +15,30 @@ export async function mealsTransactions(app: FastifyInstance) {
     }
   })
 
+  app.get(
+    '/summary',
+    { preHandler: [checkSessionIdExist] },
+    async (request) => {
+      const { sessionId } = request.cookies
+
+      const meals = await knex('meals').where('session_id', sessionId).select()
+
+      const mealsQtd = meals.length
+
+      const mealsInDiet = meals.filter((meals) => meals.isOnTheDiet).length
+
+      const mealsOffDiet = meals.filter(
+        (meals) => meals.isOnTheDiet !== true,
+      ).length
+
+      return {
+        mealsQtd,
+        mealsInDiet,
+        mealsOffDiet,
+      }
+    },
+  )
+
   app.get('/:id', { preHandler: [checkSessionIdExist] }, async (request) => {
     const getMealsParamsSchema = z.object({
       id: z.string().uuid(),
