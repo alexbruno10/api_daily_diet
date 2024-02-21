@@ -90,10 +90,14 @@ export async function mealsTransactions(app: FastifyInstance) {
 
       const { id } = getMealsParamsSchema.parse(request.params)
 
-      await knex('meals').update({ name, description, isOnTheDiet }).where({
-        session_id: sessionId,
-        id,
-      })
+      const now = knex.fn.now()
+
+      await knex('meals')
+        .update({ name, description, isOnTheDiet, updated_at: now })
+        .where({
+          session_id: sessionId,
+          id,
+        })
 
       return response.status(201).send()
     },
