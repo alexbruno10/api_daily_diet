@@ -99,7 +99,28 @@ export async function mealsTransactions(app: FastifyInstance) {
           id,
         })
 
-      return response.status(201).send()
+      return response.status(200).send()
+    },
+  )
+
+  app.delete(
+    '/:id',
+    { preHandler: [checkSessionIdExist] },
+    async (request, response) => {
+      const getMealsParamsSchema = z.object({
+        id: z.string().uuid(),
+      })
+
+      const { sessionId } = request.cookies
+
+      const { id } = getMealsParamsSchema.parse(request.params)
+
+      await knex('meals').delete().where({
+        session_id: sessionId,
+        id,
+      })
+
+      return response.status(200).send()
     },
   )
 }
