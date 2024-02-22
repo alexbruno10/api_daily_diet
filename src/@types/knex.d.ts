@@ -9,7 +9,7 @@ declare module 'knex/types/tables' {
       description: string
       isOnTheDiet: boolean
       created_at: string
-      updated_at: string
+      updated_at?: string
     }
   }
 }
