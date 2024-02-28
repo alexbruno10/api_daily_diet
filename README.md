@@ -1,6 +1,6 @@
 # 🍎 Descrição do projeto API Daily Diet:
 
-Em desenvolvimento
+API desenvolvida em Node.JS para controle de dieta.
 
 ## 🛠️ Tecnologias utilizadas:
 
@@ -11,6 +11,8 @@ Em desenvolvimento
 * Fastify Cookie
 * Knex
 * Postgres
+* Vitest
+* Supertest
 * Docker
 
 ### ✏️ RF (Requisitos funcionaiss)
@@ -30,6 +32,9 @@ Em desenvolvimento
 - [x] O usuario só pode apagar refeições o qual ele criou;
 - [x] A refeição deverá conter data/hora ao inserir no banco de dados;
 
+### 🚀 Para executar
 
+- yarn dev / npm run dev
+- docker compose up
 
 <p align="center">Desenvolvido por Alex Bruno</p>
