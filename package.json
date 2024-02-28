@@ -4,11 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "tsx watch src/server.ts",
+    "wait-for-db": "sleep 10",
     "test": "echo \"Error: no test specified\" && exit 1",
     "knex": "node --import tsx ./node_modules/knex/bin/cli.js",
     "lint": "eslint src --ext .ts --fix",
-    "test": "vitest"
+    "test": "vitest",
+    "dev": "tsx watch src/server.ts",
+    "predev": "npm run knex migrate:latest"
   },
   "keywords": [],
   "author": "",
