@@ -73,6 +73,8 @@ export async function mealsTransactions(app: FastifyInstance) {
 
     let sessionId = request.cookies.sessionId
 
+    console.log(sessionId)
+
     if (!sessionId) {
       sessionId = randomUUID()
 
