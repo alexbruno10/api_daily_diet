@@ -11,6 +11,7 @@ Em desenvolvimento
 * Fastify Cookie
 * Knex
 * Postgres
+* Docker
 
 ### ✏️ RF (Requisitos funcionaiss)
 
