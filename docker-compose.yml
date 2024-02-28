@@ -1,0 +1,33 @@
+version: '2.18'
+
+networks:
+  app-tier:
+    driver: bridge
+
+services:
+  database:
+    image: postgres
+    container_name: database
+    restart: always
+    ports:
+      - 5432:5432
+    networks:
+      - app-tier
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=pg123
+      - POSTGRES_DB=daily_diet
+  app:
+    build: .
+    container_name: daily_diet
+    ports:
+      - 3333:3333
+    networks:
+      - app-tier
+    links: 
+      - database
+    restart: always
+    depends_on:
+      - database
+    environment:
+      - DATABASE_CLIENT=pg
